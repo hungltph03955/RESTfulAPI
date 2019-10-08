@@ -38,7 +38,7 @@ class UserController extends ApiController
      */
     public function store(Request $request)
     {
-      $rule = [
+      $rules = [
         'name' => 'required',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:6|confirmed',
