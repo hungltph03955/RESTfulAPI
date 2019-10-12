@@ -77,9 +77,17 @@ class CategoryController extends ApiController
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(Request $request, Category $category)
   {
-      //
+    $category->fill($request->only([
+      'name',
+      'description'
+    ]));
+    if ($category->isClean()) {
+      return $this->errorResponse('You need to specify any different value to update', 422);
+    }
+    $category->save();
+    return $this->showOne($category);
   }
 
   /**
@@ -88,8 +96,9 @@ class CategoryController extends ApiController
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(Category $category)
   {
-      //
+    $category->delete();
+    return $this->showOne($category);
   }
 }
