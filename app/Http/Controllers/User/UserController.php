@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+use App\Mail\UserCreated;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends ApiController
 {
@@ -99,7 +101,7 @@ class UserController extends ApiController
       if ($request->has('email') && $user->email != $request->email) {
         $user->verified = User::UNVERIFIED_USER;
         $user->verification_token = User::generateVerificationCode();
-        $user->email = $requuest->email;
+        $user->email = $request->email;
       }
 
       if ($request->has('password')) {
@@ -138,5 +140,15 @@ class UserController extends ApiController
         $user->verification_token = null;
         $user->save();
         return $this->showMessage('The account has been verified successfully');
+    }
+
+    public function resend(User $user) {
+        if ($user->isVerified()) {
+            return $this->errorResponse('This user is already verified', 409);
+        }
+        retry(5, function() use ($user) {
+            Mail::to($user)->send(new UserCreated($user));
+        }, 100);
+        return $this->errorResponse('The verification email has been resend', 409);
     }
 }
