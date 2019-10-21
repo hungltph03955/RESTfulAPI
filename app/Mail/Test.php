@@ -6,22 +6,19 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\User;
 
-class UserMailChanged extends Mailable
+class Test extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct()
     {
-        $this->user = $user;
+        //
     }
 
     /**
@@ -31,6 +28,6 @@ class UserMailChanged extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.confirm')->subject('Please confirm your new email');
+        return $this->markdown('emails.test');
     }
 }

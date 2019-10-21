@@ -1,3 +1,12 @@
-Hello {{ $user->name }}
-You changed your email, so we need to verify this new address. please use the link blow:
-{{ route('verify', $user->verification_token) }}
+@component('mail::message')
+# Hello {{ $user->name }}
+
+You changed your email, so we need to verify this new address. please use the button blow:
+
+@component('mail::button', ['url' => route('verify', $user->verification_token) ])
+Verify Account
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent
