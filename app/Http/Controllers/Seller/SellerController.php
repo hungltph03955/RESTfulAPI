@@ -9,26 +9,20 @@ use App\Http\Controllers\ApiController;
 class SellerController extends ApiController
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-      $sellers = Seller::has('products')->get();
-      return $this->showAll($sellers);
+        $sellers = Seller::has('products')->get();
+        return $this->showAll($sellers);
     }
 
-
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Seller $seller
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Seller $seller)
     {
-      $sellers = Seller::has('products')->findOrFail($id);
-      return $this->showOne($sellers);
+        return $this->showOne($seller);
     }
 }

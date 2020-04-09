@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Transaction;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Transaction;
+use Illuminate\Http\Request;
 
 class TransactionController extends ApiController
 {
@@ -41,10 +42,10 @@ class TransactionController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Transaction $transaction)
     {
         //
     }
@@ -52,10 +53,10 @@ class TransactionController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -64,10 +65,10 @@ class TransactionController extends ApiController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }
@@ -75,10 +76,10 @@ class TransactionController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Transaction $transaction)
     {
         //
     }
