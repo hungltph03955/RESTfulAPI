@@ -50,4 +50,5 @@ Route::resource('transactions.sellers', 'Transaction\TransactionSellerController
 
 
 Route::resource('user', 'User\UserController');
-
+Route::name('verify')->get('user/verify/{token}', 'User\UserController@verify');
+Route::name('resend')->get('user/{user}/resend', 'User\UserController@resend');

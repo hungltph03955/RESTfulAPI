@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Mail\UserCreated;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\User;
 
 class UserController extends ApiController
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -21,20 +22,18 @@ class UserController extends ApiController
     }
 
     /**
-     * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
         //
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -52,7 +51,7 @@ class UserController extends ApiController
         $data['verification_token'] = User::generateVerificationCode();
         $data['admin'] = User::REGULAR_USER;
         $user = User::create($data);
-        return response()->json(['data' => $user], 200);
+        return response()->json(['data' => $user], Response::HTTP_OK);
     }
 
 
@@ -107,13 +106,13 @@ class UserController extends ApiController
 
         if ($request->has('addmin')) {
             if (!$user->isVerified()) {
-                return $this->errorResponse('Only verified users can modify the admin field', 409);
+                return $this->errorResponse('Only verified users can modify the admin field', Response::HTTP_CONFLICT);
             }
             $user->admin = $request->admin;
         }
 
         if (!$user->isDirty()) {
-            return $this->errorResponse('You need to specify a different value to update', 422);
+            return $this->errorResponse('You need to specify a different value to update', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
         $user->save();
         return $this->showOne($user);
@@ -121,14 +120,37 @@ class UserController extends ApiController
 
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function destroy(User $user)
     {
         $user->delete();
         return $this->showOne($user);
+    }
+
+    /**
+     * @param $token
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function verify($token)
+    {
+        $user = User::where('verification_token', $token)->firstOrFail();
+        $user->verified = User::VERIFIED_USER;
+        $user->verification_token = null;
+        $user->save();
+        return $this->showMessage('The account has been verified successfully');
+    }
+
+    public function resend(User $user)
+    {
+        if ($user->isVerified()) {
+            return $this->errorResponse('This user is already verified', Response::HTTP_CONFLICT);
+        }
+//        retry(5, function () use ($user) {
+//            Mail::to($user)->send(new UserCreated($user));
+//        }, 100);
+        return $this->showMessage('The verification email has been resend');
     }
 }

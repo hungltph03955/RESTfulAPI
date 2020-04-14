@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SellerProductController extends ApiController
@@ -39,7 +40,7 @@ class SellerProductController extends ApiController
         $this->validate($request, $rules);
         $data = $request->all();
         $data["status"] = Product::UNAVAILABLE_PRODUCT;
-        $data["image"] = '1.jpg';
+        $data["image"] = $request->image->store('');
         $data["seller_id"] = $seller->id;
         $product = Product::create($data);
         return $this->showOne($product);
@@ -76,6 +77,11 @@ class SellerProductController extends ApiController
             }
         }
 
+        if ($request->hasFile('image')) {
+            Storage::delete($product->image);
+            $product->image = $request->image->store('');
+        }
+
         if ($product->isClean()) {
             return $this->errorResponse('you need to specify a different value to update', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
@@ -102,9 +108,11 @@ class SellerProductController extends ApiController
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function destroy(Seller $seller, Product $product) {
+    public function destroy(Seller $seller, Product $product)
+    {
         $this->checkSeller($seller, $product);
         $product->delete();
+        Storage::delete($product->image);
         return $this->showOne($product);
     }
 }
