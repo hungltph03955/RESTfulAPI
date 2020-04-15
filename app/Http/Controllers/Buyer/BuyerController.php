@@ -8,15 +8,14 @@ use App\Buyer;
 
 class BuyerController extends ApiController
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-      $buyers = Buyer::has('transactions')->get();
-      return $this->showAll($buyers);
+        $buyers = Buyer::has('transactions')->get();
+        return $this->showAll($buyers);
     }
 
 
@@ -26,7 +25,7 @@ class BuyerController extends ApiController
      */
     public function show(Buyer $buyer)
     {
-      return $this->showOne($buyer);
+        return $this->showOne($buyer);
     }
 
 }

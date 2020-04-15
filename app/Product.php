@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Transformers\ProductTransformer;
 use App\User;
 use App\Category;
 use App\Transaction;
@@ -25,6 +26,8 @@ class Product extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public $transformer = ProductTransformer::class;
 
     public function isAvailable()
     {

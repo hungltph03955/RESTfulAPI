@@ -14,8 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpKernel\Tests\Exception\MethodNotAllowedHttpExceptionTest;
-use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 
 class Handler extends ExceptionHandler
 {
@@ -52,11 +50,9 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
-     *
      * @param \Illuminate\Http\Request $request
-     * @param \Exception $exception
-     * @return \Illuminate\Http\Response
+     * @param Exception $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response|Response
      */
     public function render($request, Exception $exception)
     {
