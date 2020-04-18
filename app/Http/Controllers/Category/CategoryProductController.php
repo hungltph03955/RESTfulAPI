@@ -9,6 +9,18 @@ use Illuminate\Http\Request;
 class CategoryProductController extends ApiController
 {
 
+    /**
+     * CategoryProductController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('client.credentials')->only(['index']);
+    }
+
+    /**
+     * @param Category $category
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index(Category $category)
     {
         $products = $category->products;

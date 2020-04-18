@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\ApiController;
 use App\Product;
 use App\Transaction;
+use App\Transformers\TransactionTransformer;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -12,6 +13,18 @@ use Illuminate\Support\Facades\DB;
 
 class ProductBuyerTransactionController extends ApiController
 {
+
+    public function __construct()
+    {
+    }
+
+    /**
+     * @param Request $request
+     * @param Product $product
+     * @param User $buyer
+     * @return \Illuminate\Http\JsonResponse|mixed
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request, Product $product, User $buyer)
     {
         $rules = [

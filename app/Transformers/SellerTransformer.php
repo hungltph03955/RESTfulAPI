@@ -47,13 +47,13 @@ class SellerTransformer extends TransformerAbstract
     public static function originalAttribute($index)
     {
         $attributes = [
-            'identifier' => 'id',
+            'id' => 'identifier',
             'name' => 'name',
             'email' => 'email',
-            'isVerified' => 'verified',
-            'creationDate' => 'create_at',
-            'lastChange' => 'updated_at',
-            'deleteDate' => 'deleted_at',
+            'verified' => 'isVerified',
+            'create_at' => 'creationDate',
+            'updated_at' => 'lastChange',
+            'deleted_at' => 'deleteDate',
         ];
 
         return isset($attributes[$index]) ? $attributes[$index] : null;

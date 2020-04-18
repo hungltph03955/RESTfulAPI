@@ -3,15 +3,22 @@
 namespace App\Http\Controllers\User;
 
 use App\Mail\UserCreated;
+use App\Transformers\UserTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+use phpDocumentor\Reflection\Types\Parent_;
 
 class UserController extends ApiController
 {
+    public function __construct()
+    {
+        $this->middleware('client.credentials')->only(['store', 'resend']);
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -51,7 +58,7 @@ class UserController extends ApiController
         $data['verification_token'] = User::generateVerificationCode();
         $data['admin'] = User::REGULAR_USER;
         $user = User::create($data);
-        return response()->json(['data' => $user], Response::HTTP_OK);
+        return response()->json(['data' => $user], Response::HTTP_CREATED);
     }
 
 

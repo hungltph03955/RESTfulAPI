@@ -10,6 +10,15 @@ use Illuminate\Http\Response;
 
 class ProductCategoryController extends ApiController
 {
+
+    /**
+     * ProductCategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('client.credentials')->only(['index']);
+    }
+
     /**
      * @param Product $product
      * @return \Illuminate\Http\JsonResponse
@@ -20,7 +29,8 @@ class ProductCategoryController extends ApiController
         return $this->showAll($categories);
     }
 
-    public function update(Request $request, Product $product, Category $category) {
+    public function update(Request $request, Product $product, Category $category)
+    {
 //        attach : them
 //        sync : xoa r them
 //        syncWithoutDetach
@@ -28,7 +38,8 @@ class ProductCategoryController extends ApiController
         return $this->showAll($product->categories);
     }
 
-    public function destroy(Product $product, Category $category) {
+    public function destroy(Product $product, Category $category)
+    {
         if (!$product->categories()->find($category->id)) {
             return $this->errorResponse('The specified category is not a category of this product', Response::HTTP_NOT_FOUND);
         }

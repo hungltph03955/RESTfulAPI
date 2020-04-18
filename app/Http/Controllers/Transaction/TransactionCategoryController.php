@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class TransactionCategoryController extends ApiController
 {
     /**
+     * TransactionCategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('client.credentials')->only(['index']);
+    }
+
+    /**
      * @param Transaction $transaction
      * @return \Illuminate\Http\JsonResponse
      */

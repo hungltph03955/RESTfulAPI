@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Seller;
 
 use App\Product;
 use App\Seller;
+use App\Transformers\ProductTransformer;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
@@ -13,6 +14,10 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SellerProductController extends ApiController
 {
+    public function __construct()
+    {
+    }
+
     /**
      * @param Seller $seller
      * @return \Illuminate\Http\JsonResponse

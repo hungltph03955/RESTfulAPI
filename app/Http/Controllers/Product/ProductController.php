@@ -8,31 +8,30 @@ use Illuminate\Http\Request;
 
 class ProductController extends ApiController
 {
+    /**
+     * ProductController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('client.credentials')->only(['index', 'show']);
+    }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $product = Product::all();
         return $this->showAll($product);
     }
 
-
-    public function store(Request $request)
-    {
-        //
-    }
-
+    /**
+     * @param Product $product
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show(Product $product)
     {
         return $this->showOne($product);
     }
 
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    public function destroy(Product $product)
-    {
-        //
-    }
 }
