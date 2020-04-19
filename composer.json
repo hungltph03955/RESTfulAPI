@@ -13,9 +13,9 @@
         "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "^6.0",
         "laravel/homestead": "^9.2",
-        "laravel/passport": "^8.4",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-fractal": "^5.7"
+        "spatie/laravel-fractal": "^5.7",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

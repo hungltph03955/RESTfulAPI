@@ -16,7 +16,6 @@ class UserController extends ApiController
 {
     public function __construct()
     {
-        $this->middleware('client.credentials')->only(['store', 'resend']);
     }
 
     /**

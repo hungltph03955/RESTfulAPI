@@ -63,9 +63,15 @@ class Kernel extends HttpKernel
         // 'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'throttle' => \App\Http\Middleware\CustomThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'client.credentials' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
         'signature' => \App\Http\Middleware\SignatureMiddleware::class,
 //        'transform.input' => \App\Http\Middleware\TranspormInput::class,
+
+
+//        'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class,
+
+        'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
+
     ];
 
     /**
