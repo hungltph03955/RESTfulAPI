@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
 use Tymon\JWTAuth\JWTAuth;
-use JWTAuthException;
 
 class AuthController extends ApiController
 {
@@ -28,7 +28,7 @@ class AuthController extends ApiController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function signup(Request $request)
+    public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
@@ -56,24 +56,43 @@ class AuthController extends ApiController
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
+        $user = User::select('*')->where('email', $request->get('email'))->first();
         $credentials = $request->only('email', 'password');
-
         if (!$token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+        if ($user->admin === false) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
         return response()->json([
-            'token' => $token,
-            'expires' => auth('api')->factory()->getTTL() * 60,
+            'token_type' => 'bearer',
+            'access_token' => $token,
+            'expires_in' => auth('api')->factory()->getTTL() * 60 * 8,
         ]);
     }
 
+
     /**
-     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout(Request $request)
+    public function logout()
     {
-        $request->user()->token()->revoke();
-        return $this->showMessage('Successfully logged out');
+        Auth::guard('api')->logout();
+        return $this->showMessage('Successfully logged out', Response::HTTP_OK);
     }
+
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh() {
+        $token = Auth::guard('api')->refresh();
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60 * 8,
+        ]);
+
+    }
+
 }
