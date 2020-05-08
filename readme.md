@@ -40,4 +40,7 @@ REST APIs are useful for all kinds of apps. They can be the back-end to a front-
     
     8, Open check api doc:
         
+        postman import file restfulapi.postman_collection.json
+    
+        
         

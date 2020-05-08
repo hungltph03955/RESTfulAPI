@@ -1,0 +1,1536 @@
+{
+	"info": {
+		"_postman_id": "b071d883-940c-460a-952d-f24e88c85f5d",
+		"name": "restfulapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authen_token_api_login}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/user",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "name",
+									"disabled": true
+								},
+								{
+									"key": "isVerified",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "isAdmin",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/user/13",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/user/370/resend",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"370",
+								"resend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/user/verify/MTYJzKHl6AzYNN8HAGYVFw59um4sfWfCAoWTadNS",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"verify",
+								"MTYJzKHl6AzYNN8HAGYVFw59um4sfWfCAoWTadNS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "trungvitlondangyeu",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "tuanhungluong1602@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "verified",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://restfulapi.local/api/user/1024",
+							"protocol": "http",
+							"host": [
+								"restfulapi",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"1024"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "trungvitlondangyeunhat",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "tuanhung.jvb@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "verified",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/user",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/user/2",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/api/products/66/categories/",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"66",
+										"categories",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/api/products/66/categories/20",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"66",
+										"categories",
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/api/products/66/categories/20",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"66",
+										"categories",
+										"20"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Buyer-Transaction",
+					"item": [
+						{
+							"name": "Create",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true,
+									"content-length": true,
+									"host": true,
+									"user-agent": true,
+									"accept": true,
+									"accept-encoding": true,
+									"connection": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"numberPhone\": \"0978155619\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/api/products/43/buyers",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"43",
+										"buyers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buyers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/api/products/43/buyers",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"43",
+										"buyers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "quantity",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/products/43/buyers/245/transactions",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"43",
+										"buyers",
+										"245",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/products",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/products/66",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/products/65/transactions",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"65",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "trungvitlondangyeu",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "trungvitlon@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "verified",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://restfulapi.local/api/user/1002",
+							"protocol": "http",
+							"host": [
+								"restfulapi",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"1002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "trungvitlon3",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "trungvitlon5@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "verified",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/user",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://restfulapi.local/api/user/1001",
+							"protocol": "http",
+							"host": [
+								"restfulapi",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"1001"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/categories",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/categories/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ahuhuhuhu",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "ahihihihi",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/categories/5",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "trungvitlon",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Trứng vịt lộn của bố rất đáng yêu",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/categories",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/categories/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/categories/19/products",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"19",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Seller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/categories/32/sellers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"32",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/categories/1/transactions",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"1",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Buyers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/categories/19/buyers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"19",
+								"buyers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Buyer",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authen_token_api_login}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/buyers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"buyers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/buyers/75",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"buyers",
+								"75"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/buyers/1/transactions",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"buyers",
+								"1",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/buyers/1/products",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"buyers",
+								"1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Seller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/buyers/1/sellers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"buyers",
+								"1",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/buyers/1/categories",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"buyers",
+								"1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Sellers",
+			"item": [
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/api/sellers/466/products",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"sellers",
+										"466",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "test a3",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/mac/Documents/anh_nen/745693-free-megalodon-wallpapers-1920x1080-for-lockscreen.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/sellers/466/products",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"sellers",
+										"466",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "vitlondangyeunhatqua dat nhaat nhat",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "vitlondangyeu nhat cua bo",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "available",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/mac/Documents/anh_nen/GREAT_WHITE_SHARK_4941x3300.jpg"
+										},
+										{
+											"key": "_method",
+											"value": "put",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/sellers/466/products/1010",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"sellers",
+										"466",
+										"products",
+										"1010"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "vitlondangyeunhatqua dat nhaat nhat",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "vitlondangyeu nhat cua bo",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "available",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/sellers/466/products/1009",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"sellers",
+										"466",
+										"products",
+										"1009"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/sellers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/sellers/466",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"sellers",
+								"466"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/sellers/22/transactions",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"sellers",
+								"22",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/sellers/22/categories",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"sellers",
+								"22",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Buyers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/sellers/22/buyers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"sellers",
+								"22",
+								"buyers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Detail Seller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/transactions/1/sellers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"1",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/transactions/1/categories",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authen",
+			"item": [
+				{
+					"name": "oauth_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{domain}}/oauth/token",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sigup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "trungvitlondangyeunhat",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "tuanhung.jvb@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "verified",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/register",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "trungvitlondangyeunhat",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a00b822c-a5e5-46c3-b40e-b0b11438c830",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"authen_token_api_login\", data.access_token)",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "remember_me",
+									"value": "true",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6MzAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU4NzM1MTMzNywiZXhwIjoxNTg3MzU0OTM3LCJuYmYiOjE1ODczNTEzMzcsImp0aSI6ImE3MFJTMGVpRG5oRjhGNGgiLCJzdWIiOjEwMDEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.ZCYFbsS-Bvi-839-rj33irkMEKEfSem4Vbycg_mxjtY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{domain}}/api/logout",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6MzAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU4NzM1MjU5NSwiZXhwIjoxNTg3MzU2MTk1LCJuYmYiOjE1ODczNTI1OTUsImp0aSI6IkZTQU10N1JVN2FHMDFXRDciLCJzdWIiOjEwMDEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.FEsxmCYsy-vGfgcBqmvtcks8bjTZjFzws-bcQOmzH1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{domain}}/api/refresh",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
