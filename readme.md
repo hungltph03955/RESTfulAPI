@@ -29,11 +29,8 @@ REST APIs are useful for all kinds of apps. They can be the back-end to a front-
         DB_USERNAME=your_username(ex: root)
         DB_PASSWORD=your_password
     
-    5, Migrate database:
-        php artisan migrate 
-        
-    6, Seeding data:
-        php artisan db:seed
+    5, Import file SQL:
+        laravel_restful.sql
     
     7, Start server:
         php artisan serve --port=3000
